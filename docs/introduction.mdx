@@ -10,69 +10,21 @@ MCP is an open protocol that standardizes how applications provide context to LL
 ## Why MCP?
 
 MCP helps you build agents and complex workflows on top of LLMs. LLMs frequently need to integrate with data and tools, and MCP provides:
-- A growing list of pre-built integrations that your LLM can directly plug into
-- The flexibility to switch between LLM providers and vendors
-- Best practices for securing your data within your infrastructure
+- Predictability: Help ensure the LLM behaves as expected by providing the proper context
+- Efficiency: A growing list of pre-built integrations that your LLM can directly plug into 
+- Flexibility: The ability to switch between LLM providers and vendors
+- Security: Clear context boudaries and best practices for securing your data within your infrastructure
 
-### General architecture
+Explore the applications that support MCP integrations and trusted examples of MCP servers that demonstrate what the protocol can do.
 
-At its core, MCP follows a client-server architecture where a host application can connect to multiple servers:
-
-```mermaid
-flowchart LR
-    subgraph "Your Computer"
-        Host["Host with MCP Client\n(Claude, IDEs, Tools)"]
-        S1["MCP Server A"]
-        S2["MCP Server B"]
-        S3["MCP Server C"]
-        Host <-->|"MCP Protocol"| S1
-        Host <-->|"MCP Protocol"| S2
-        Host <-->|"MCP Protocol"| S3
-        S1 <--> D1[("Local\nData Source A")]
-        S2 <--> D2[("Local\nData Source B")]
-    end
-    subgraph "Internet"
-        S3 <-->|"Web APIs"| D3[("Remote\nService C")]
-    end
-```
-
-- **MCP Hosts**: Programs like Claude Desktop, IDEs, or AI tools that want to access data through MCP
-- **MCP Clients**: Protocol clients that maintain 1:1 connections with servers
-- **MCP Servers**: Lightweight programs that each expose specific capabilities through the standardized Model Context Protocol
-- **Local Data Sources**: Your computer's files, databases, and services that MCP servers can securely access
-- **Remote Services**: External systems available over the internet (e.g., through APIs) that MCP servers can connect to
-
-## Get started
-
-Choose the path that best fits your needs:
-
-#### Quick Starts
 <CardGroup cols={2}>
-  <Card
-    title="For Server Developers"
-    icon="bolt"
-    href="/quickstart/server"
+    <Card
+    title="Example Clients"
+    icon="cubes"
+    href="/clients"
   >
-    Get started building your own server to use in Claude for Desktop and other clients
+    View the list of clients that support MCP integrations
   </Card>
-  <Card
-    title="For Client Developers"
-    icon="bolt"
-    href="/quickstart/client"
-  >
-    Get started building your own client that can integrate with all MCP servers
-  </Card>
-  <Card
-    title="For Claude Desktop Users"
-    icon="bolt"
-    href="/quickstart/user"
-  >
-    Get started using pre-built servers in Claude for Desktop
-  </Card>
-</CardGroup>
-
-#### Examples
-<CardGroup cols={2}>
   <Card
     title="Example Servers"
     icon="grid"
@@ -80,16 +32,39 @@ Choose the path that best fits your needs:
   >
     Check out our gallery of official MCP servers and implementations
   </Card>
+</CardGroup>
+
+## Get started
+
+We reccomend reading the quickstart guides in the following order:
+
+<CardGroup cols={1}>
   <Card
-    title="Example Clients"
-    icon="cubes"
-    href="/clients"
+    title="For Claude Desktop Users"
+    icon="bolt"
+    href="/quickstart/user"
   >
-    View the list of clients that support MCP integrations
+    Get started using pre-built servers in Claude for Desktop
+  </Card>
+  <Card
+    title="For Server Developers"
+    icon="bolt"
+    href="/quickstart/server"
+  >
+    Set up your own server to use in Claude for Desktop and other clients
+  </Card>
+  <Card
+    title="For Client Developers"
+    icon="bolt"
+    href="/quickstart/client"
+  >
+    Build your own client that can integrate with all MCP servers
   </Card>
 </CardGroup>
 
 ## Tutorials
+
+Develop your understanding and capacity to use MCPs with these tutorials.
 
 <CardGroup cols={2}>
   <Card
@@ -122,6 +97,34 @@ Choose the path that best fits your needs:
 </CardGroup>
 
 ## Explore MCP
+
+### General architecture
+
+At its core, MCP follows a client-server architecture where a host application can connect to multiple servers:
+
+```mermaid
+flowchart LR
+    subgraph "Your Computer"
+        Host["Host with MCP Client\n(Claude, IDEs, Tools)"]
+        S1["MCP Server A"]
+        S2["MCP Server B"]
+        S3["MCP Server C"]
+        Host <-->|"MCP Protocol"| S1
+        Host <-->|"MCP Protocol"| S2
+        Host <-->|"MCP Protocol"| S3
+        S1 <--> D1[("Local\nData Source A")]
+        S2 <--> D2[("Local\nData Source B")]
+    end
+    subgraph "Internet"
+        S3 <-->|"Web APIs"| D3[("Remote\nService C")]
+    end
+```
+
+- **MCP Hosts**: Programs like Claude Desktop, IDEs, or AI tools that want to access data through MCP
+- **MCP Clients**: Protocol clients that maintain 1:1 connections with servers
+- **MCP Servers**: Lightweight programs that each expose specific capabilities through the standardized Model Context Protocol
+- **Local Data Sources**: Your computer's files, databases, and services that MCP servers can securely access
+- **Remote Services**: External systems available over the internet (e.g., through APIs) that MCP servers can connect to
 
 Dive deeper into MCP's core concepts and capabilities:
 
